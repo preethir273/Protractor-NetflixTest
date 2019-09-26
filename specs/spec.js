@@ -29,6 +29,15 @@ describe('Netflix login test', function() {
     expect(netflixLoginpage.emailPhoneError.isPresent()).toBeTruthy();
     expect(netflixLoginpage.passwordError.isPresent()).toBeTruthy(); 
   });
+  
+  //enter invalid phone and password	
+  it('invalid sign in', function() {
+	netflixLoginpage.setPhoneEmail('666666666');
+	netflixLoginpage.setPassword('asdfghjkl');	
+    netflixLoginpage.clickSignInButton();
+    expect(netflixLoginpage.getHeading()).toEqual('Sign In');
+    expect(netflixLoginpage.signInError.isPresent()).toBeTruthy();
+  });
 });
 
 
